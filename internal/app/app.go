@@ -12,7 +12,8 @@ import (
 )
 
 func Run() error {
-	ctx := context.Background()
+	ctx, cncl := context.WithCancel(context.Background())
+	defer cncl()
 
 	log := logger.New()
 	log.Info("application starting...")
